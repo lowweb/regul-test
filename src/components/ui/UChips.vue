@@ -19,6 +19,7 @@ const getImageUrl = () => {
     <div class="chips__value">{{ chipsValue }}</div>
   </div>
 </template>
+
 <style lang="scss">
 .chips {
   border-radius: 12px;
