@@ -4,7 +4,7 @@ const props = defineProps({
     type: String
   },
   chipsValue: {
-    type: Number,
+    type: String,
     required: true
   }
 })
@@ -31,7 +31,7 @@ const getImageUrl = () => {
   font-weight: 500;
   font-size: 13px;
   line-height: 154%;
-  color: var(--color-white);
+  color: var(--color-dark-grey2);
 
   &__img {
     margin-right: 9px;

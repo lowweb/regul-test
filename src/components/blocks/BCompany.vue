@@ -4,18 +4,18 @@ import UButton from '../ui/UButton.vue'
 </script>
 
 <template>
-  <div class="header-company">
-    <img src="@/assets/img/img-company-logo.png" alt="logo" class="header-company__logo" />
-    <h5 class="header-company__name">Наследие</h5>
-    <BAddInfo :doc-check-status="true" :rating="4.7" :reviews="19" class="header-company__add" />
-    <UButton size="large">
+  <div class="company">
+    <img src="@/assets/img/img-company-logo.png" alt="logo" class="company__logo" />
+    <h5 class="company__name">Наследие</h5>
+    <BAddInfo :doc-check-status="true" :rating="4.7" :reviews="19" class="company__add" />
+    <UButton size="large" color="--color-green">
       <template #textButton> Показать номер телефона </template>
     </UButton>
   </div>
 </template>
 
 <style lang="scss">
-.header-company {
+.company {
   display: flex;
   flex-direction: column;
   align-items: center;

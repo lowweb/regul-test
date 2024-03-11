@@ -1,8 +1,7 @@
 <script setup>
 import BNav from './BNav.vue'
-import BHeaderCompany from './BHeaderCompany.vue'
+import BCompany from './BCompany.vue'
 import BMenu from '../blocks/BMenu.vue'
-import UButton from '../ui/UButton.vue'
 </script>
 
 <template>
@@ -10,18 +9,9 @@ import UButton from '../ui/UButton.vue'
     <div class="header__nav nav">
       <BNav />
     </div>
-    <BHeaderCompany class="header__company" />
-    <BMenu class="header__menu">
-      <UButton>
-        <template #textButton>Товары и услуги</template>
-      </UButton>
-      <UButton>
-        <template #textButton> Агенты</template>
-      </UButton>
-      <UButton>
-        <template #textButton>О Компании</template>
-      </UButton>
-    </BMenu>
+    <BCompany class="header__company" />
+
+    <BMenu class="header__menu"> </BMenu>
   </header>
 </template>
 
@@ -33,6 +23,9 @@ import UButton from '../ui/UButton.vue'
   border-bottom: 1px solid var(--color-light-grey2);
   &__company {
     margin-bottom: 32px;
+    @media screen and (max-width: 933px) {
+      display: none;
+    }
   }
   &__menu {
     display: flex;
@@ -40,6 +33,13 @@ import UButton from '../ui/UButton.vue'
     justify-content: center;
     gap: 8px;
     margin-bottom: 32px;
+
+    @media screen and (max-width: 933px) {
+      margin-bottom: 0;
+      padding: 8px 16px;
+      overflow-x: scroll;
+      justify-content: flex-start;
+    }
   }
 }
 </style>
