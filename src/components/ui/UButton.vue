@@ -25,7 +25,8 @@ const backgroundColor = `var(${props.color})`
     :class="{
       'button--large': size === 'large',
       'button--border': hasBorder,
-      'button--small': size === 'small'
+      'button--small': size === 'small',
+      'button--green': color === '--color-green'
     }"
   >
     <slot name="textButton"></slot>
@@ -45,24 +46,25 @@ const backgroundColor = `var(${props.color})`
   text-align: center;
   color: var(--color-light-black);
   background-color: v-bind(backgroundColor);
-  padding: 8px 12px;
+  padding: 7px 11px;
   text-wrap: nowrap;
   display: inline-flex;
+  justify-content: center;
+  border: 1px solid v-bind(backgroundColor);
 
   &__value {
     margin-left: 4px;
     color: var(--color-dark-grey);
   }
 
-  &--active {
-    border: 1px solid var(--color-dark-grey);
+  &--green {
+    color: var(--color-dark-grey2);
   }
   &--large {
-    color: var(--color-white);
-    padding: 16px 20px;
+    padding: 15px 19px;
   }
   &--small {
-    padding: 6px 12px;
+    padding: 7px 11px;
   }
 
   &--border {

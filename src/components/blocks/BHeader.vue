@@ -2,6 +2,7 @@
 import BNav from './BNav.vue'
 import BCompany from './BCompany.vue'
 import BMenu from '../blocks/BMenu.vue'
+import UButton from '../ui/UButton.vue'
 </script>
 
 <template>
@@ -9,7 +10,12 @@ import BMenu from '../blocks/BMenu.vue'
     <div class="header__nav nav">
       <BNav />
     </div>
-    <BCompany class="header__company" />
+    <div class="header__company">
+      <BCompany />
+      <UButton size="large" color="--color-green">
+        <template #textButton> Показать номер телефона </template>
+      </UButton>
+    </div>
 
     <BMenu class="header__menu"> </BMenu>
   </header>
@@ -23,6 +29,9 @@ import BMenu from '../blocks/BMenu.vue'
   border-bottom: 1px solid var(--color-light-grey2);
   &__company {
     margin-bottom: 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     @media screen and (max-width: 933px) {
       display: none;
     }

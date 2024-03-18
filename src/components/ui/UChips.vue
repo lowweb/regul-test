@@ -1,4 +1,6 @@
 <script setup>
+import { computed } from 'vue'
+import getImageUrl from '@/utils/getImgUrl'
 const props = defineProps({
   chipsImg: {
     type: String
@@ -8,14 +10,11 @@ const props = defineProps({
     required: true
   }
 })
-
-const getImageUrl = () => {
-  return new URL(`../../assets/icn/${props.chipsImg}`, import.meta.url)
-}
+const imgUrl = computed(() => getImageUrl('../assets/icn/', props.chipsImg))
 </script>
 <template>
   <div class="chips">
-    <img :src="getImageUrl()" alt="views" class="chips__img" />
+    <img :src="imgUrl" alt="views" class="chips__img" />
     <div class="chips__value">{{ chipsValue }}</div>
   </div>
 </template>

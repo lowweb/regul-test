@@ -1,8 +1,9 @@
 <script setup>
 import BNavUser from './BNavUser.vue'
-import InlineSvg from 'vue-inline-svg'
 import UCart from '../ui/UCart.vue'
 import UHam from '../ui/UHam.vue'
+import IcnAllCategory from '../icons/IcnAllCategory.vue'
+import IcnLoaction from '../icons/IcnLoaction.vue'
 </script>
 
 <template>
@@ -10,11 +11,11 @@ import UHam from '../ui/UHam.vue'
   <div class="nav__title">Annoncé</div>
   <div class="nav__content">
     <button class="nav__btn">
-      <inline-svg src="../../src/assets/icn/icn-all-category.svg" class="nav__btn-icn" />
+      <IcnAllCategory class="nav__btn-icn" />
       Все категории
     </button>
     <a href="#" class="nav__location">
-      <inline-svg src="../../src/assets/icn/icn-location.svg" class="nav__btn-icn" />
+      <IcnLoaction class="nav__btn-icn" />
       Ростов-на-Дону
     </a>
     <span class="nav__sep"></span>

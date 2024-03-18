@@ -1,16 +1,25 @@
 <script setup>
+import { onBeforeMount } from 'vue'
 import BAddInfo from './BAddInfo.vue'
-import UButton from '../ui/UButton.vue'
+import { useCompanyStore } from '@/stores/companyStore'
+const companyStore = useCompanyStore()
+
+onBeforeMount(() => {
+  companyStore.getCompanyMainInfo()
+  companyStore.getCompanyRatingReview()
+})
 </script>
 
 <template>
   <div class="company">
     <img src="@/assets/img/img-company-logo.png" alt="logo" class="company__logo" />
-    <h5 class="company__name">Наследие</h5>
-    <BAddInfo :doc-check-status="true" :rating="4.7" :reviews="19" class="company__add" />
-    <UButton size="large" color="--color-green">
-      <template #textButton> Показать номер телефона </template>
-    </UButton>
+    <h5 class="company__name">{{ companyStore.companyMainInfo.name }}</h5>
+    <BAddInfo
+      :doc-check-status="companyStore.companyRatingReview.docCheckStatus"
+      :rating="companyStore.companyRatingReview.rating"
+      :reviews="companyStore.companyRatingReview.review"
+      class="company__add"
+    />
   </div>
 </template>
 

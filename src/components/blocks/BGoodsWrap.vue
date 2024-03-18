@@ -9,12 +9,13 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: auto;
-  row-gap: 48px;
-  column-gap: 32px;
-  padding: 32px 40px 73px 40px;
+  row-gap: 56px;
+  column-gap: 24px;
+  padding: 8px 40px 81px 40px;
+  flex: 1 1 auto;
 
   @media screen and (max-width: 933px) {
-    padding: 8px 16px;
+    padding: 8px 16px 8px 16px;
     grid-template-columns: 1fr;
     row-gap: 24px;
     margin: 0 auto;

@@ -30,6 +30,7 @@
   font-family: var(--font-family);
   font-weight: 500;
   font-size: 15px;
+  line-height: 160%;
   color: var(--color-dark-grey);
   padding: 24px 32px 40px 32px;
   border-top: 1px solid #dbdbdb;
