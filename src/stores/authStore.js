@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia'
 import { fetchWrapper } from '../helpers/fetchWrapper'
+import router from '../router'
 
 const baseUrl = `${import.meta.env.VITE_API_URL}/users`
 
@@ -11,13 +12,13 @@ export const useAuthStore = defineStore('authStore', () => {
     const userF = await fetchWrapper.post(`${baseUrl}/authenticate`, { username, password })
 
     localStorage.setItem('user', JSON.stringify(userF))
-    console.log(this.router)
-    this.router.push('/')
+    router.push(returnUrl || '/agents')
   }
   const logout = () => {
-    this.user = null
+    user = null
     localStorage.removeItem('user')
-    this.router.push('/login')
+    router.push('/')
+    // router.go('/')
   }
 
   return {

@@ -1,5 +1,5 @@
 import './assets/main.css'
-import { createApp } from 'vue'
+import { createApp, markRaw } from 'vue'
 import { createPinia } from 'pinia'
 
 import App from './App.vue'
@@ -24,8 +24,13 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 const app = createApp(App)
+const pinia = createPinia()
 
-app.use(createPinia())
+pinia.use(({ store }) => {
+  store.router = markRaw(router)
+})
+
 app.use(router)
+app.use(pinia)
 app.use(vuetify)
 app.mount('#app')
