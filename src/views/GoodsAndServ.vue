@@ -21,6 +21,7 @@ onBeforeMount(async () => {
   <ULoader v-if="loaderStore.loaderActive" />
   <BGoodsWrap>
     <BCard
+      v-if="!loaderStore.loaderActive"
       v-for="item in goodsStore.goods"
       :key="item.id"
       :name="item.name"

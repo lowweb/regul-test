@@ -3,7 +3,8 @@ import GoodsAndServ from '../views/GoodsAndServ.vue'
 import ErrorPage from '../views/ErrorPage.vue'
 import AgentsInfo from '../views/AgentsInfo.vue'
 import AboutCompany from '../views/AboutCompany.vue'
-
+import LoginPage from '../views/LoginPage.vue'
+import { useAuthStore } from '@/stores/authStore'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -18,6 +19,11 @@ const router = createRouter({
       component: AgentsInfo
     },
     {
+      path: '/login',
+      name: 'login',
+      component: LoginPage
+    },
+    {
       path: '/about',
       name: 'about',
       component: AboutCompany
@@ -28,6 +34,18 @@ const router = createRouter({
       component: ErrorPage
     }
   ]
+})
+
+router.beforeEach(async (to) => {
+  // redirect to login page if not logged in and trying to access a restricted page
+  const publicPages = ['/login']
+  const authRequired = !publicPages.includes(to.path)
+  const auth = useAuthStore()
+
+  if (authRequired && !auth.user) {
+    auth.returnUrl = to.fullPath
+    return '/login'
+  }
 })
 
 export default router

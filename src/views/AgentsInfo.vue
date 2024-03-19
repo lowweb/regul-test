@@ -27,6 +27,7 @@ onBeforeMount(async () => {
       :rating="agent.rating"
       :doc-check-status="agent.docCheckStatus"
       :info="agent.info"
+      v-if="!loaderStore.loaderActive"
     />
   </BAgentsWrap>
 </template>
