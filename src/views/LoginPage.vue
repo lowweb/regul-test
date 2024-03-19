@@ -2,7 +2,6 @@
 import { ref } from 'vue'
 import { useAuthStore } from '@/stores/authStore'
 const formData = ref({ username: '', password: '' })
-const isError = false
 function onSubmit() {
   const authStore = useAuthStore()
   return authStore
@@ -19,12 +18,5 @@ function onSubmit() {
         <v-btn type="submit" color="primary" block class="mt-2">Войти</v-btn>
       </v-form>
     </v-sheet>
-
-    <v-alert
-      text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, ratione debitis quis est labore voluptatibus! Eaque cupiditate minima, at placeat totam, magni doloremque veniam neque porro libero rerum unde voluptatem!"
-      title="Alert title"
-      type="info"
-      variant="tonal"
-    ></v-alert>
   </div>
 </template>

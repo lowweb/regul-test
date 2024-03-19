@@ -9,10 +9,11 @@ export const useAuthStore = defineStore('authStore', () => {
   const returnUrl = null
 
   const login = async (username, password) => {
-    const userF = await fetchWrapper.post(`${baseUrl}/authenticate`, { username, password })
-
-    localStorage.setItem('user', JSON.stringify(userF))
-    router.push(returnUrl || '/agents')
+    const data = await fetchWrapper.post(`${baseUrl}/authenticate`, { username, password })
+    // update pinia state
+    user = data
+    localStorage.setItem('user', JSON.stringify(data))
+    router.push(returnUrl || '/')
   }
   const logout = () => {
     user = null
