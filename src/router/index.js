@@ -16,12 +16,18 @@ const router = createRouter({
     {
       path: '/agents',
       name: 'agents',
-      component: AgentsInfo
+      component: AgentsInfo,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/login',
       name: 'login',
-      component: LoginPage
+      component: LoginPage,
+      meta: {
+        guest: true
+      }
     },
     {
       path: '/about',
@@ -36,29 +42,18 @@ const router = createRouter({
   ]
 })
 
-router.beforeEach(async (to) => {
-  console.log(to.path)
-  const authPages = ['/agents']
-  const authRequired = authPages.includes(to.path)
+router.beforeEach(async (to, from, next) => {
   const auth = useAuthStore()
-  if (authRequired && !auth.user) {
-    auth.returnUrl = to.fullPath
-    return '/login'
+  if (to.meta.requiresAuth) {
+    if (!auth.user) {
+      return next({ name: 'login' })
+    }
+  } else if (to.meta.guest) {
+    if (await auth.user) {
+      return next({ name: 'agents' })
+    }
   }
-  // if (authRequired && !auth.user) next({ name: 'login' })
-  // else next()
+  next()
 })
-
-// router.beforeEach(async (to) => {
-//   // redirect to login page if not logged in and trying to access a restricted page
-//   const publicPages = ['/login'];
-//   const authRequired = !publicPages.includes(to.path);
-//   const auth = useAuthStore();
-
-//   if (authRequired && !auth.user) {
-//       auth.returnUrl = to.fullPath;
-//       return '/login';
-//   }
-// });
 
 export default router

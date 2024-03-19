@@ -9,9 +9,8 @@ import { createVuetify } from 'vuetify'
 import * as components from 'vuetify/components'
 import * as directives from 'vuetify/directives'
 
-import { makeServer } from './api/server'
-// setup fake backend
-import { fakeBackend } from './helpers/fakeBackend'
+import { restServer } from './api/restServer'
+import { authServer } from './api/authServer'
 
 const vuetify = createVuetify({
   components,
@@ -19,8 +18,8 @@ const vuetify = createVuetify({
 })
 
 if (process.env.NODE_ENV === 'development') {
-  makeServer()
-  fakeBackend()
+  restServer()
+  authServer()
 }
 
 const app = createApp(App)

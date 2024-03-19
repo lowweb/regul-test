@@ -1,7 +1,7 @@
-export { fakeBackend }
+export { authServer }
 
-function fakeBackend() {
-  let users = [{ id: 1, username: 'test', password: 'test', firstName: 'Test', lastName: 'User' }]
+function authServer() {
+  let users = [{ id: 1, username: 'admin', password: 'secret' }]
   let realFetch = window.fetch
   window.fetch = function (url, opts) {
     return new Promise((resolve, reject) => {

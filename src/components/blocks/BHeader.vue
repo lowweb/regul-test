@@ -3,8 +3,6 @@ import BNav from './BNav.vue'
 import BCompany from './BCompany.vue'
 import BMenu from '../blocks/BMenu.vue'
 import UButton from '../ui/UButton.vue'
-import { useAuthStore } from '@/stores/authStore'
-const authStore = useAuthStore()
 </script>
 
 <template>
@@ -17,9 +15,6 @@ const authStore = useAuthStore()
       <UButton size="large" color="--color-green">
         <template #textButton> Показать номер телефона </template>
       </UButton>
-      <UButton v-show="authStore.user" @click="authStore.logout()"
-        ><template #textButton> Выйти</template></UButton
-      >
     </div>
 
     <BMenu class="header__menu"> </BMenu>

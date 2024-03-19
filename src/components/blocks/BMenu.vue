@@ -1,5 +1,7 @@
 <script setup>
 import UButton from '../ui/UButton.vue'
+import { useAuthStore } from '@/stores/authStore'
+const authStore = useAuthStore()
 </script>
 <template>
   <div class="menu">
@@ -20,6 +22,10 @@ import UButton from '../ui/UButton.vue'
         <template #textButton>О Компании</template>
       </UButton>
     </router-link>
+
+    <UButton v-show="authStore.user" @click="authStore.logout()">
+      <template #textButton> Выйти</template>
+    </UButton>
   </div>
 </template>
 <style lang="scss">
