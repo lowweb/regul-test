@@ -1,28 +1,52 @@
 <script setup>
+import { onBeforeMount } from 'vue'
 import UMap from '../ui/UMap.vue'
 import BCompany from '../blocks/BCompany.vue'
+import { useCompanyStore } from '../../stores/companyStore'
+const companyStore = useCompanyStore()
+onBeforeMount(async () => {
+  companyStore.getCompanyAbout()
+})
 </script>
 
 <template>
   <div class="company-info">
+    <input type="text" />
     <BCompany class="company-info__header" />
     <div class="company-info__block">
       <span class="company-info__title">О компании</span>
-      <span class="company-info__desc"
-        >Копкой занимаемся 15 лет. Все началось с хобби и плавно переросло в любимую работу.
-        Работаем с профессиональной техникой.
-      </span>
+      <v-skeleton-loader
+        :loading="companyStore.companyAboutLoading"
+        width="560"
+        type="list-item-three-line"
+      >
+        <v-responsive>
+          <span class="company-info__desc">{{ companyStore.companyAbout.about }} </span>
+        </v-responsive>
+      </v-skeleton-loader>
     </div>
 
     <div class="company-info__block company-info__time">
       <span class="company-info__title">Режим работы</span>
-      <span class="company-info__desc">Сегодня с 8:00 до 23:00</span>
+      <v-skeleton-loader :loading="companyStore.companyAboutLoading" width="560" type="list-item">
+        <v-responsive>
+          <span class="company-info__desc">{{ companyStore.companyAbout.time }}</span>
+        </v-responsive>
+      </v-skeleton-loader>
     </div>
 
     <div class="company-info__location">
       <div class="company-info__adress">
         <span class="company-info__title">Местоположение</span>
-        <span class="company-info__desc">Ростов на Дону, Воронежская ул., 42А корп. 1</span>
+        <v-skeleton-loader
+          :loading="companyStore.companyAboutLoading"
+          width="560"
+          type="list-item-two-line"
+        >
+          <v-responsive>
+            <span class="company-info__desc">{{ companyStore.companyAbout.addres }}</span>
+          </v-responsive>
+        </v-skeleton-loader>
       </div>
       <UMap class="company-info__map" />
     </div>
@@ -103,6 +127,9 @@ import BCompany from '../blocks/BCompany.vue'
       height: 96px;
       max-width: 100%;
     }
+  }
+  & .v-skeleton-loader {
+    background-color: inherit;
   }
 }
 

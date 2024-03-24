@@ -1,6 +1,5 @@
 <script setup>
 import USelect from '../../components/ui/USelect.vue'
-import USelectTwo from '../../components/ui/USelectTwo.vue'
 </script>
 <template>
   <div class="filters">

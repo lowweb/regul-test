@@ -5,6 +5,8 @@ import BCompanyInfo from '@/components/blocks/BCompanyInfo.vue'
 
 <template>
   <BCompanyWrap>
-    <BCompanyInfo />
+    <KeepAlive>
+      <BCompanyInfo />
+    </KeepAlive>
   </BCompanyWrap>
 </template>

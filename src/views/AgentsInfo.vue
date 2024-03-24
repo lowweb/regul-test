@@ -8,6 +8,7 @@ import { useLoaderStore } from '@/stores/loaderStore'
 const agentsStore = useAgentsStore()
 const loaderStore = useLoaderStore()
 
+console.log('agent created')
 onBeforeMount(async () => {
   loaderStore.setLoaderActive(true)
   await agentsStore.getAgents()
